@@ -34,17 +34,18 @@ public class Calculate {
                     set.add(products[i].name);
             }
         }
-        System.out.println("Te same produkty o różnej cenie to: " + set);
+        System.out.println("Te same produkty o różnej cenie to: " + set + " Uwaga! Kasjerka oszukała!");
     }
 
     public int theRest(double coinNumber) {
         int coinsCount = 0;
         double[] nominals = {5, 2, 0.2, 0.1, 0.05, 0.01};
-
-        for (double n : nominals) {
-            coinsCount += (coinNumber / n);
-            coinNumber -= (int) (coinNumber / n) * n;
+        for (int i = 0; i < nominals.length; i++) {
+            coinsCount += (coinNumber / nominals[i]);
+            coinNumber -= (int) (coinNumber / nominals[i]) * nominals[i];
         }
         return coinsCount;
+
+
     }
 }
