@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.*;
+
 public class Calculate {
 
     public double sumaAll(Product[] products) {
@@ -25,14 +27,14 @@ public class Calculate {
     }
 
     public void showFraud(Product[] products) {
-        String[] theSame = new String[products.length];
+        Set<String> set = new HashSet<>();
         for (int i = 0; i < products.length; i++) {
             for (int j = 0; j < products.length; j++) {
-                if ((products[i].name.equals(products[j].name) && products[i].price != products[j].price) && theSame[i] != products[i].name)
-                    theSame[i] = products[i].name;
+                if ((products[i].name.equals(products[j].name) && products[i].price != products[j].price))
+                    set.add(products[i].name);
             }
         }
-        System.out.println("Te same produkty o różnej cenie to: " + theSame[0] + " " + theSame[1]);
+        System.out.println("Te same produkty o różnej cenie to: " + set);
     }
 
     public int theRest(double coinNumber) {
